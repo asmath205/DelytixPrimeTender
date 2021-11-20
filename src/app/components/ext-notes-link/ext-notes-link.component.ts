@@ -3,7 +3,6 @@ import {FormBuilder, FormGroup} from '@angular/forms';
 import {ActivatedRoute} from '@angular/router';
 import {ExtNotesLinkService} from '../../services/ext-notes-link.service'
 import * as momentTz from 'moment-timezone';
-import {ToastrService} from 'ngx-toastr';
 import {MatTableDataSource} from '@angular/material/table';
 import * as moment from 'moment-timezone';
 import {now} from 'moment-timezone';
@@ -47,7 +46,6 @@ export class ExtNotesLinkComponent implements OnInit {
   constructor(private route: ActivatedRoute,
               private fb: FormBuilder,
               private extNotesService: ExtNotesLinkService,
-              private toastr: ToastrService,
   ) {}
 
 
