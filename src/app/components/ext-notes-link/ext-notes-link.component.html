@@ -1,0 +1,106 @@
+<div class="app-ext-notes-link" xmlns="http://www.w3.org/1999/html">
+  <div class="app-header">
+    <h1 class="header-title">DeLytix Delivery Management System</h1>
+  </div>
+  <div class="app-container">
+        <div class="col-12" style="padding-left: 5px!important;">
+              <div class="col-12">
+                <div class="str">
+                  <label class="head"><b>Shipper :</b></label>
+                  <div class="value-txt">{{shipmentDetails.clientName}}</div>
+                </div>
+              </div>
+
+              <div class="col-12">
+                <div class="str">
+                  <label class="head"><b> Shipment #: </b></label>
+                  <div class="value-txt"> {{shipmentDetails.shipmentId}} </div>
+                </div>
+              </div>
+
+              <div class="col-12">
+                <div class="str">
+                  <label class="head"><b> Assigned Carrier : </b></label>
+                  <div class="value-txt">{{shipmentDetails.carrierName}}</div>
+                </div>
+              </div>
+
+              <div class="col-12">
+                <div class="str">
+                  <label class="head"><b> Assigned Driver : </b></label>
+                  <div  class="value-txt">{{shipmentDetails.deliveryDr}}</div>
+                </div>
+              </div>
+
+              <div class="col-12">
+                <div class="str">
+                  <label class="head"><b> Ship Point : </b></label>
+                  <label class="value-txt">{{shipmentDetails.facilityName}}</label>
+                </div>
+              </div>
+
+              <div class="col-12">
+                <div class="str">
+                  <label class="head"><b> DepartBy : </b></label>
+                  <label class="value-txt"> {{shipmentDetails.departByExp | date : 'MMM-dd h:mm a'}} </label>
+                </div>
+              </div>
+      <div class="content">
+          <table mat-table [dataSource]="dataSource">
+            <ng-container matColumnDef="stop">
+              <th mat-header-cell *matHeaderCellDef> Stop#</th>
+              <td mat-cell *matCellDef="let element"> {{element.stopNumb}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="name">
+              <th mat-header-cell *matHeaderCellDef> Name </th>
+              <td mat-cell *matCellDef="let element"> {{element.stopName}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="city">
+              <th mat-header-cell *matHeaderCellDef> City </th>
+              <td mat-cell *matCellDef="let element"> {{element.city}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="state">
+              <th mat-header-cell *matHeaderCellDef> State </th>
+              <td mat-cell *matCellDef="let element"> {{element.state}} </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+          </table>
+      </div>
+<!--        // button code-->
+        <div  *ngIf="shipmentDetails.tenderOffer !== 1" class="btn-str">
+        <div class="btn-str0">
+          <button class="btn-black"  type="submit" (click)="closePage()">Cancel</button>
+        </div>
+        <div class="btn-str0">
+          <button class="btn-red" type="submit" (click)="sendResponse('Declined',2)">Decline</button>
+        </div>
+        <div class="btn-str0">
+          <button class="btn-green" type="submit" (click)="sendResponse('Accepted',1)">Accept</button>
+        </div>
+    </div>
+
+          <div *ngIf="shipmentDetails.tenderOffer === 1" class="img-cen">
+            <div class="trans-bottom-logo">
+              <p class="offer-accept" >OFFER HAS BEEN ACCEPTED</p>
+            </div>
+          </div>
+
+<!--          image code-->
+    <div class="img-cen">
+      <div class="trans-bottom-logo">
+        <img src="https://s3.amazonaws.com/pod-s3config-miuat/Images/TransLogo_email.png" class="trans-logo" />
+      </div>
+    </div>
+
+
+
+
+</div>
+
+  </div>
+</div>
